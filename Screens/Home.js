@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Button } from "react-native";
 const Home = (props) => {
   return (
     <View style={styles.layout}>
-      <Text style={styles.title}>Home</Text>
+      <Text style={styles.title}>Word Games</Text>
       <Button
         title="Go to Screen 1"
         onPress={() => props.navigation.navigate("Screen1")}

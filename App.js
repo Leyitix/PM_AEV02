@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import Home from "./screens/Home";
 import Screen1 from "./screens/Screen1";
+import "./polyfills";
 
 const Stack = createStackNavigator();
 
