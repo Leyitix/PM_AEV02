@@ -12,6 +12,9 @@ export default function Crosswords() {
   const [software, setSoftware] = useState([]);
   const [thisSoftware, setThisSoftware] = useState([]);
 
+  const [developer, setDeveloper] = useState([]);
+  const [thisDeveloper, setThisDeveloper] = useState([]);
+
   const getDatos = async () => {
     try {
       const software = await fetch(
@@ -62,34 +65,41 @@ export default function Crosswords() {
 
   function numberOnPress(e) {
     let word = "";
-    console.log(software);
+    let arrayLetras = [];
+    let thisInput = [];
 
     if (e == "1") {
       word = "software";
+      arrayLetras = software;
+      thisInput = thisSoftware;
     } else if (e == "2") {
       word = "developer";
+      arrayLetras = developer;
+      developer.splice(6, 0, developer[0]);
+      developer.shift();
+      console.log("modificar developer: " + developer);
     }
 
     console.log(word);
     for (let i = word.length - 1; i >= 0; i--) {
-      if (software[i] == "") {
-        let ultimoIndex = software.length - 1;
-        console.log("ultimo elemento " + software[ultimoIndex]);
-        [software[i], software[ultimoIndex]] = [
-          software[ultimoIndex],
-          software[i],
+      if (arrayLetras[i] == "") {
+        let ultimoIndex = arrayLetras.length - 1;
+        console.log("ultimo elemento " + arrayLetras[ultimoIndex]);
+        [arrayLetras[i], arrayLetras[ultimoIndex]] = [
+          arrayLetras[ultimoIndex],
+          arrayLetras[i],
         ];
-        software.pop();
-        console.log(software);
+        arrayLetras.pop();
+        console.log(arrayLetras);
       }
     }
 
     for (let i = 0; i < word.length; i++) {
-      if (word[i] != software[i]) {
-        console.log("antes " + software);
-        thisSoftware[i].clear();
-        software[i] = "";
-        console.log("despues " + software);
+      if (word[i] != arrayLetras[i]) {
+        console.log("antes " + arrayLetras);
+        thisInput[i].clear();
+        arrayLetras[i] = "";
+        console.log("despues " + arrayLetras);
       }
     }
   }
@@ -152,6 +162,11 @@ export default function Crosswords() {
                           placeholder={"D"}
                           size="20"
                           defaultValue={0}
+                          onChangeText={(newText) => developer.push(newText)}
+                          ref={(input) => {
+                            this.developer_D = input;
+                            thisDeveloper.push(this.developer_D);
+                          }}
                         />
                       </View>
                       <View style={{ padding: 2, borderWidth: 1 }}>
@@ -159,6 +174,11 @@ export default function Crosswords() {
                           placeholder={"E"}
                           size="20"
                           defaultValue={0}
+                          onChangeText={(newText) => developer.push(newText)}
+                          ref={(input) => {
+                            this.developer_E = input;
+                            thisDeveloper.push(this.developer_E);
+                          }}
                         />
                       </View>
                       <View style={{ padding: 2, borderWidth: 1 }}>
@@ -166,6 +186,11 @@ export default function Crosswords() {
                           placeholder={"V"}
                           size="20"
                           defaultValue={0}
+                          onChangeText={(newText) => developer.push(newText)}
+                          ref={(input) => {
+                            this.developer_V = input;
+                            thisDeveloper.push(this.developer_V);
+                          }}
                         />
                       </View>
                       <View style={{ padding: 2, borderWidth: 1 }}>
@@ -173,6 +198,11 @@ export default function Crosswords() {
                           placeholder={"E"}
                           size="20"
                           defaultValue={0}
+                          onChangeText={(newText) => developer.push(newText)}
+                          ref={(input) => {
+                            this.developer_E = input;
+                            thisDeveloper.push(this.developer_E);
+                          }}
                         />
                       </View>
                       <View style={{ padding: 2, borderWidth: 1 }}>
@@ -180,6 +210,11 @@ export default function Crosswords() {
                           placeholder={"L"}
                           size="20"
                           defaultValue={0}
+                          onChangeText={(newText) => developer.push(newText)}
+                          ref={(input) => {
+                            this.developer_L = input;
+                            thisDeveloper.push(this.developer_L);
+                          }}
                         />
                       </View>
                       <View style={{ padding: 2, borderWidth: 1 }}>
@@ -187,7 +222,10 @@ export default function Crosswords() {
                           placeholder={"O"}
                           size="20"
                           defaultValue={0}
-                          onChangeText={(newText) => software.push(newText)}
+                          onChangeText={(newText) => {
+                            software.push(newText);
+                            developer.push(newText);
+                          }}
                           ref={(input) => {
                             this.software_O = input;
                             thisSoftware.push(this.software_O);
@@ -199,6 +237,11 @@ export default function Crosswords() {
                           placeholder={"P"}
                           size="20"
                           defaultValue={0}
+                          onChangeText={(newText) => developer.push(newText)}
+                          ref={(input) => {
+                            this.developer_P = input;
+                            thisDeveloper.push(this.developer_P);
+                          }}
                         />
                       </View>
                       <View style={{ padding: 2, borderWidth: 1 }}>
@@ -206,6 +249,11 @@ export default function Crosswords() {
                           placeholder={"E"}
                           size="20"
                           defaultValue={0}
+                          onChangeText={(newText) => developer.push(newText)}
+                          ref={(input) => {
+                            this.developer_E = input;
+                            thisDeveloper.push(this.developer_E);
+                          }}
                         />
                       </View>
                       <View style={{ padding: 2, borderWidth: 1 }}>
@@ -213,6 +261,11 @@ export default function Crosswords() {
                           placeholder={"R"}
                           size="20"
                           defaultValue={0}
+                          onChangeText={(newText) => developer.push(newText)}
+                          ref={(input) => {
+                            this.developer_R = input;
+                            thisDeveloper.push(this.developer_R);
+                          }}
                         />
                       </View>
                     </View>
