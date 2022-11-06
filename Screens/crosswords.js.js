@@ -15,7 +15,19 @@ export default function Crosswords() {
   const [developer, setDeveloper] = useState([]);
   const [thisDeveloper, setThisDeveloper] = useState([]);
 
-  let contador = 0;
+  const [system, setSystem] = useState([]);
+  const [thisSystem, setThisSystem] = useState([]);
+
+  const [app, setApp] = useState([]);
+  const [thisApp, setThisApp] = useState([]);
+
+  const [framework, setFramework] = useState([]);
+  const [thisFramework, setThisFramework] = useState([]);
+
+  let contadorDev = 0;
+  let contadorSys = 0;
+  let contadorApp = 0;
+  let contadorFramework = 0;
   let verificacion = false;
 
   const getDatos = async () => {
@@ -81,12 +93,40 @@ export default function Crosswords() {
       arrayLetras = developer;
       thisInput = thisDeveloper;
       console.log("modificar developer: " + developer);
-      if (contador == 0 && verificacion == true) {
-        thisDeveloper.splice(6, 0, thisDeveloper[0]);
-        thisDeveloper.shift();
+      if (contadorDev == 0 && verificacion == true) {
         developer.splice(6, 0, developer[0]);
         developer.shift();
-        contador = 1;
+        contadorDev = 1;
+      }
+    } else if (e == "3") {
+      word = "system";
+      arrayLetras = system;
+      thisInput = thisSystem;
+      console.log("modificar system: " + system);
+      if (contadorSys == 0 && verificacion == true) {
+        system.splice(4, 0, system[0]);
+        system.shift();
+        contadorSys = 1;
+      }
+    } else if (e == "4") {
+      word = "app";
+      arrayLetras = app;
+      thisInput = thisApp;
+      console.log("modificar app: " + app);
+      if (contadorApp == 0 && verificacion == true) {
+        app.splice(0, 0, app[0]);
+        app.shift();
+        contadorApp = 1;
+      }
+    } else if (e == "5") {
+      word = "framework";
+      arrayLetras = framework;
+      thisInput = thisFramework;
+      if (contadorFramework == 0 && verificacion == true) {
+        framework.splice(5, 0, framework[0]);
+        framework.shift();
+        console.log("modificar framework: " + framework);
+        contadorFramework = 1;
       }
     }
 
@@ -313,6 +353,11 @@ export default function Crosswords() {
                           placeholder={"S"}
                           size="20"
                           defaultValue={0}
+                          onChangeText={(newText) => system.push(newText)}
+                          ref={(input) => {
+                            this.system_S = input;
+                            thisSystem.push(this.system_S);
+                          }}
                         />
                       </View>
                       <View style={{ padding: 2, borderWidth: 1 }}>
@@ -320,6 +365,11 @@ export default function Crosswords() {
                           placeholder={"Y"}
                           size="20"
                           defaultValue={0}
+                          onChangeText={(newText) => system.push(newText)}
+                          ref={(input) => {
+                            this.system_Y = input;
+                            thisSystem.push(this.system_Y);
+                          }}
                         />
                       </View>
                       <View style={{ padding: 2, borderWidth: 1 }}>
@@ -327,6 +377,11 @@ export default function Crosswords() {
                           placeholder={"S"}
                           size="20"
                           defaultValue={0}
+                          onChangeText={(newText) => system.push(newText)}
+                          ref={(input) => {
+                            this.system_S = input;
+                            thisSystem.push(this.system_S);
+                          }}
                         />
                       </View>
                       <View style={{ padding: 2, borderWidth: 1 }}>
@@ -334,10 +389,15 @@ export default function Crosswords() {
                           placeholder={"T"}
                           size="20"
                           defaultValue={0}
-                          onChangeText={(newText) => software.push(newText)}
+                          onChangeText={(newText) => {
+                            software.push(newText);
+                            system.push(newText);
+                          }}
                           ref={(input) => {
                             this.software_T = input;
+                            this.system_T = input;
                             thisSoftware.push(this.software_T);
+                            thisSystem.push(this.system_T);
                           }}
                         />
                       </View>
@@ -346,6 +406,11 @@ export default function Crosswords() {
                           placeholder={"E"}
                           size="20"
                           defaultValue={0}
+                          onChangeText={(newText) => system.push(newText)}
+                          ref={(input) => {
+                            this.system_E = input;
+                            thisSystem.push(this.system_E);
+                          }}
                         />
                       </View>
                       <View style={{ padding: 2, borderWidth: 1 }}>
@@ -353,6 +418,11 @@ export default function Crosswords() {
                           placeholder={"M"}
                           size="20"
                           defaultValue={0}
+                          onChangeText={(newText) => system.push(newText)}
+                          ref={(input) => {
+                            this.system_M = input;
+                            thisSystem.push(this.system_M);
+                          }}
                         />
                       </View>
                       <View style={{ width: 64 }}></View>
@@ -389,10 +459,15 @@ export default function Crosswords() {
                           placeholder={"A"}
                           size="20"
                           defaultValue={0}
-                          onChangeText={(newText) => software.push(newText)}
+                          onChangeText={(newText) => {
+                            software.push(newText);
+                            app.push(newText);
+                          }}
                           ref={(input) => {
                             this.software_A = input;
+                            this.app_A = input;
                             thisSoftware.push(this.software_A);
+                            thisApp.push(this.app_A);
                           }}
                         />
                       </View>
@@ -401,6 +476,11 @@ export default function Crosswords() {
                           placeholder={"P"}
                           size="20"
                           defaultValue={0}
+                          onChangeText={(newText) => app.push(newText)}
+                          ref={(input) => {
+                            this.app_P = input;
+                            thisApp.push(this.app_P);
+                          }}
                         />
                       </View>
                       <View style={{ padding: 2, borderWidth: 1 }}>
@@ -408,6 +488,11 @@ export default function Crosswords() {
                           placeholder={"P"}
                           size="20"
                           defaultValue={0}
+                          onChangeText={(newText) => app.push(newText)}
+                          ref={(input) => {
+                            this.app_P = input;
+                            thisApp.push(this.app_P);
+                          }}
                         />
                       </View>
                       <View style={{ width: 64 }}></View>
@@ -444,6 +529,11 @@ export default function Crosswords() {
                           placeholder={"F"}
                           size="20"
                           defaultValue={0}
+                          onChangeText={(newText) => framework.push(newText)}
+                          ref={(input) => {
+                            this.framework_F = input;
+                            thisFramework.push(this.framework_F);
+                          }}
                         />
                       </View>
                       <View style={{ padding: 2, borderWidth: 1 }}>
@@ -451,6 +541,11 @@ export default function Crosswords() {
                           placeholder={"R"}
                           size="20"
                           defaultValue={0}
+                          onChangeText={(newText) => framework.push(newText)}
+                          ref={(input) => {
+                            this.framework_R = input;
+                            thisFramework.push(this.framework_R);
+                          }}
                         />
                       </View>
                       <View style={{ padding: 2, borderWidth: 1 }}>
@@ -458,6 +553,11 @@ export default function Crosswords() {
                           placeholder={"A"}
                           size="20"
                           defaultValue={0}
+                          onChangeText={(newText) => framework.push(newText)}
+                          ref={(input) => {
+                            this.framework_A = input;
+                            thisFramework.push(this.framework_A);
+                          }}
                         />
                       </View>
                       <View style={{ padding: 2, borderWidth: 1 }}>
@@ -465,6 +565,11 @@ export default function Crosswords() {
                           placeholder={"M"}
                           size="20"
                           defaultValue={0}
+                          onChangeText={(newText) => framework.push(newText)}
+                          ref={(input) => {
+                            this.framework_M = input;
+                            thisFramework.push(this.framework_M);
+                          }}
                         />
                       </View>
                       <View style={{ padding: 2, borderWidth: 1 }}>
@@ -472,10 +577,15 @@ export default function Crosswords() {
                           placeholder={"E"}
                           size="20"
                           defaultValue={0}
-                          onChangeText={(newText) => software.push(newText)}
+                          onChangeText={(newText) => {
+                            software.push(newText);
+                            framework.push(newText);
+                          }}
                           ref={(input) => {
                             this.software_E = input;
+                            this.framework_E = input;
                             thisSoftware.push(this.software_E);
+                            thisFramework.push(this.framework_E);
                           }}
                         />
                       </View>
@@ -484,6 +594,11 @@ export default function Crosswords() {
                           placeholder={"W"}
                           size="20"
                           defaultValue={0}
+                          onChangeText={(newText) => framework.push(newText)}
+                          ref={(input) => {
+                            this.framework_W = input;
+                            thisFramework.push(this.framework_W);
+                          }}
                         />
                       </View>
                       <View style={{ padding: 2, borderWidth: 1 }}>
@@ -491,6 +606,11 @@ export default function Crosswords() {
                           placeholder={"O"}
                           size="20"
                           defaultValue={0}
+                          onChangeText={(newText) => framework.push(newText)}
+                          ref={(input) => {
+                            this.framework_O = input;
+                            thisFramework.push(this.framework_O);
+                          }}
                         />
                       </View>
                       <View style={{ padding: 2, borderWidth: 1 }}>
@@ -498,6 +618,11 @@ export default function Crosswords() {
                           placeholder={"R"}
                           size="20"
                           defaultValue={0}
+                          onChangeText={(newText) => framework.push(newText)}
+                          ref={(input) => {
+                            this.framework_R = input;
+                            thisFramework.push(this.framework_R);
+                          }}
                         />
                       </View>
                       <View style={{ padding: 2, borderWidth: 1 }}>
@@ -505,6 +630,11 @@ export default function Crosswords() {
                           placeholder={"K"}
                           size="20"
                           defaultValue={0}
+                          onChangeText={(newText) => framework.push(newText)}
+                          ref={(input) => {
+                            this.framework_K = input;
+                            thisFramework.push(this.framework_K);
+                          }}
                         />
                       </View>
                     </View>
