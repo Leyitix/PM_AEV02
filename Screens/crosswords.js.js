@@ -15,6 +15,9 @@ export default function Crosswords() {
   const [developer, setDeveloper] = useState([]);
   const [thisDeveloper, setThisDeveloper] = useState([]);
 
+  let contador = 0;
+  let verificacion = false;
+
   const getDatos = async () => {
     try {
       const software = await fetch(
@@ -72,12 +75,19 @@ export default function Crosswords() {
       word = "software";
       arrayLetras = software;
       thisInput = thisSoftware;
+      verificacion = true;
     } else if (e == "2") {
       word = "developer";
       arrayLetras = developer;
-      developer.splice(6, 0, developer[0]);
-      developer.shift();
+      thisInput = thisDeveloper;
       console.log("modificar developer: " + developer);
+      if (contador == 0 && verificacion == true) {
+        thisDeveloper.splice(6, 0, thisDeveloper[0]);
+        thisDeveloper.shift();
+        developer.splice(6, 0, developer[0]);
+        developer.shift();
+        contador = 1;
+      }
     }
 
     console.log(word);
@@ -228,7 +238,9 @@ export default function Crosswords() {
                           }}
                           ref={(input) => {
                             this.software_O = input;
+                            this.developer_O = input;
                             thisSoftware.push(this.software_O);
+                            thisDeveloper.push(this.developer_O);
                           }}
                         />
                       </View>
